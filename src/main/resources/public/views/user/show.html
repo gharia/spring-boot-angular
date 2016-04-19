@@ -1,0 +1,12 @@
+<div class="card">
+	<div class="card-content">
+		<div class="card-title">{{ctrl.user.firstname}}	{{ctrl.user.lastname}}</div>
+			First Name: {{ctrl.user.firstname}}<br> Last Name:
+			{{ctrl.user.lastname}}<br> Email: {{ctrl.user.email}}<br>
+			Email: {{ctrl.user.mobileNo}}<br> <a
+			href="#/user/edit/{{ctrl.user.id}}" class="btn">Edit</a> <input
+			class="btn red white-text" type="submit" ng-click="ctrl.delete(user)"
+			value="Delete" />
+	</div>
+</div>
+

@@ -1,0 +1,106 @@
+buildscript {
+    repositories {
+        mavenCentral()		
+        mavenLocal()
+		maven { url "https://repo.grails.org/grails/core" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE")
+		classpath("gradle.plugin.com.craigburke.gradle:bower-installer-gradle:2.5.1")
+		classpath("org.codehaus.groovy:groovy:2.4.6")
+		classpath("com.bertramlabs.plugins:asset-pipeline-gradle:2.7.4")
+		classpath("gradle.plugin.com.boxfuse.client:flyway-release:4.0")		
+		
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'com.craigburke.bower-installer'
+apply plugin: 'asset-pipeline'
+apply plugin: 'org.flywaydb.flyway'
+apply plugin: 'war'
+
+jar {
+    baseName = 'boot-demo'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+	mavenLocal()
+	maven { url "https://repo.grails.org/grails/core" }
+	jcenter()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+configurations {
+    providedRuntime
+}
+
+dependencies {    
+    compile("org.springframework.boot:spring-boot-starter-web")         
+	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("mysql:mysql-connector-java")
+	compile("org.flywaydb:flyway-core:4.0")
+		
+    compile("org.codehaus.groovy:groovy")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+	compile("com.bertramlabs.plugins:asset-pipeline-spring-boot:2.7.4")
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+bower {    
+
+	installBase = 'src/assets/bower' // <1>
+	 
+	'angular'('1.5.x') {
+        source 'angular.js' // <2>
+    }
+    'angular-resource'('1.5.x') {
+        source 'angular-resource.js' >> '/angular/' // <3>
+    }
+    'angular-mocks'('1.5.x') {
+        source 'angular-mocks.js' >> '/angular/' // <4>
+    }
+    'angular-route'('1.5.x'){
+        source 'angular-route.js' >> '/angular/' // <5>
+    }
+    'angular-animate'('1.5.x') {
+        source 'angular-animate.js' >> '/angular/' // <6>
+    }
+	'jquery'(''){
+
+    }
+    'materialize'('0.97.x') {
+        source 'dist/css/*.css' >> '/materialize/css/'
+        source 'dist/font/**' >> '/materialize/font/'
+        source 'dist/fonts/roboto/**' >> '/materialize/fonts/roboto/'        
+        source 'dist/js/*.js' >> '/materialize/js/' //<7>
+    }	
+    
+}
+
+assets {
+  minifyJs = true
+  minifyCss = true    
+}
+
+flyway {
+    driver = 'com.mysql.jdbc.Driver'
+    url = 'jdbc:mysql://localhost:3306/demo'
+    user = 'root'
+    password = 'root'    
+}

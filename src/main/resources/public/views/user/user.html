@@ -1,0 +1,21 @@
+<div class="card">
+	<div class="card-content">
+		<div class="card-title">User List</div>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Mobile No</th>
+			</tr>
+			<tr ng-repeat="user in ctrl.users">
+				<td ng-bind="user.id"></td>
+				<td><a href="#user/{{user.id}}" ng-bind="user.firstname"></a></td>
+				<td ng-bind="user.lastname"></td>
+				<td ng-bind="user.email"></td>
+				<td ng-bind="user.mobileNo"></td>
+			</tr>
+		</table>
+	</div>
+</div>
