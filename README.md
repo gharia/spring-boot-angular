@@ -42,6 +42,9 @@ Typical structure of Angular JS files for each module/entity will be as follow:
 * [Gradle]
 * [Flyway]
 
+### Reference
+[Spring Boot Asset Pipeline Gradle Adapter]
+
 License
 ----
 MIT
@@ -56,4 +59,4 @@ MIT
 [Materialize CSS]: http://materializecss.com/
 [Gradle]: http://gradle.org/
 [Flyway]: https://flywaydb.org/
-   
+[Spring Boot Asset Pipeline Gradle Adapter]: https://github.com/bertramdev/asset-pipeline/tree/master/asset-pipeline-spring-boot   
