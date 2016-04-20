@@ -4,7 +4,7 @@ This is sample Spring Boot Single Page Application using Angular. The main featu
 
 ### Prerequisites
 - [JDK 1.8]
-- [Spring Tool Suite] (STS)
+- [Spring Tool Suite]
 
 ### How to run 
 
