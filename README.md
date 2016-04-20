@@ -2,6 +2,10 @@
 
 This is sample Spring Boot Single Page Application using Angular. The main features of this proect are [Asset Pipeline] and [Bower] integration.
 
+### Prerequisites
+- [JDK 1.8]
+- [Spring Tool Suite] (STS)
+
 ### How to run 
 
   - Download/clone the project. 
@@ -60,3 +64,5 @@ MIT
 [Gradle]: http://gradle.org/
 [Flyway]: https://flywaydb.org/
 [Spring Boot Asset Pipeline Gradle Adapter]: https://github.com/bertramdev/asset-pipeline/tree/master/asset-pipeline-spring-boot   
+[Spring Tool Suite]:https://spring.io/tools
+[JDK 1.8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
