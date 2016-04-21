@@ -5,13 +5,15 @@ buildscript {
 		maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE")
-		classpath("gradle.plugin.com.craigburke.gradle:bower-installer-gradle:2.5.1")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE")		
 		classpath("org.codehaus.groovy:groovy:2.4.6")
 		classpath("com.bertramlabs.plugins:asset-pipeline-gradle:2.7.4")
-		classpath("gradle.plugin.com.boxfuse.client:flyway-release:4.0")		
-		
+		classpath("gradle.plugin.com.boxfuse.client:flyway-release:4.0")			
     }
+}
+
+plugins {
+    id 'com.craigburke.client-dependencies' version '1.0.0-RC2'
 }
 
 apply plugin: 'groovy'
@@ -19,7 +21,6 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
-apply plugin: 'com.craigburke.bower-installer'
 apply plugin: 'asset-pipeline'
 apply plugin: 'org.flywaydb.flyway'
 apply plugin: 'war'
@@ -62,35 +63,44 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
 
-bower {    
+clientDependencies {
 
-	installBase = 'src/assets/bower' // <1>
-	 
-	'angular'('1.5.x') {
-        source 'angular.js' // <2>
+	bower {
+        'jquery'('2.2.x', from:'dist') { 
+            include 'jquery.js'
+			include 'jquery.min.js'
+        }
+		'materialize'('0.97.x', from:'dist', into:'materialize'){
+			include "**"
+		}		
+		
     }
-    'angular-resource'('1.5.x') {
-        source 'angular-resource.js' >> '/angular/' // <3>
-    }
-    'angular-mocks'('1.5.x') {
-        source 'angular-mocks.js' >> '/angular/' // <4>
-    }
-    'angular-route'('1.5.x'){
-        source 'angular-route.js' >> '/angular/' // <5>
-    }
-    'angular-animate'('1.5.x') {
-        source 'angular-animate.js' >> '/angular/' // <6>
-    }
-	'jquery'(''){
+	
+	npm {
+		'angular'('1.5.x', into: 'angular') {
+			include 'angular.js' 
+			include 'angular.min.js'
+		}
+		'angular-resource'('1.5.x', into: 'angular') {
+			include 'angular-resource.js'
+			include 'angular-resource.min.js'
+		}
+		'angular-mocks'('1.5.x', into: 'angular') {
+			include 'angular-mocks.js'
+			include 'angular-mocks.min.js'
+		}
+		'angular-route'('1.5.x', into: 'angular'){
+			include 'angular-route.js'
+			include 'angular-route.min.js'
+		}
+		'angular-animate'('1.5.x', into: 'angular') {
+			include 'angular-animate.js'
+			include 'angular-animate.min.js'
+		}				
+        
+	}
 
-    }
-    'materialize'('0.97.x') {
-        source 'dist/css/*.css' >> '/materialize/css/'
-        source 'dist/font/**' >> '/materialize/font/'
-        source 'dist/fonts/roboto/**' >> '/materialize/fonts/roboto/'        
-        source 'dist/js/*.js' >> '/materialize/js/' //<7>
-    }	
-    
+	
 }
 
 assets {
