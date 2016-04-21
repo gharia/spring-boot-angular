@@ -10,7 +10,7 @@ This is sample Spring Boot Single Page Application using Angular. The main featu
 
   - Download/clone the project. 
   - Open command prompt and go to the root location of the downloaded project. Then run following command to install bower dependencies:
-  ```sh
+```sh
         gradlew bowerInstall 
 ```
   - Once installed bower dependencies, import project in Spring Tool Suite (STS) from File > Import > Gradle (STS) Project. Note that you need to install Gradle plugin in STS first if not installed yet. 
