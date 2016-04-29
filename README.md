@@ -1,6 +1,6 @@
-# Spring Boot with Angular JS using Asset Pipeline
+# Spring Boot with AngularJS using Asset Pipeline
 
-This is sample Spring Boot Single Page Application using Angular. The main features of this proect are [Asset Pipeline] and [Bower] integration.
+This is sample Spring Boot Single Page Application using Angular. The main features of this proect are [Asset Pipeline] and [Client Dependencies Management using Gradle] integration.
 
 ### Prerequisites
 - [JDK 1.8]
@@ -14,7 +14,7 @@ This is sample Spring Boot Single Page Application using Angular. The main featu
 ```sh
         gradlew clientInstall 
 ```
-  - Once installed bower dependencies, import project in Spring Tool Suite (STS) from File > Import > Gradle (STS) Project. Note that you need to install Gradle plugin in STS first if not installed yet. 
+  - This will install client dependencies in side src/assets/vendor. Once installed client dependencies, import project in Spring Tool Suite (STS) from File > Import > Gradle (STS) Project. Note that you need to install Gradle plugin in STS first if not installed yet. 
   - In STS, right click on the project and click on Gradle (STS) > Refresh Dependencies.
   - Now open **application.properties** file and change database related properties as per your [MySql] database. Change for both spring datasource and [flyway] datasource. Also create a databse with name you have specified in **application.properties**. In this demo I have named database as demo.
   - Open **App.java** and Run as **Java Application**. This will start the application and you can check on http://localhost:8080
@@ -22,7 +22,7 @@ This is sample Spring Boot Single Page Application using Angular. The main featu
 
 ### What this project coantains
 
-This Spring boot web project has implementaion of simple CRUD operation of one entity User. The implementaion is based on Angular JS. So for User entity, there is a seperate folder called user under **src/assets/javascript/bootdemo**. This folder has controllers, services, directives etc related to User module.
+This Spring boot web project has implementaion of simple CRUD operation of one entity User. The implementaion is based on Angular JS. So for User entity, there is a seperate folder called user under **src/assets/javascript/bootdemo**. This folder has controllers, services, directives and templates related to User module.
 
 Typical structure of Angular JS files for each module/entity will be as follow:
  ```sh
@@ -34,6 +34,7 @@ Typical structure of Angular JS files for each module/entity will be as follow:
                     └── controllers
                     └── services
                     └── directives
+					└── templates //all html template files goes here
                     └── bootdemo.user.js //main js file of module.
                     └── routes.js //configuring routes for this module 
 ```
@@ -69,6 +70,7 @@ MIT
 [Flyway]: https://flywaydb.org/
 [Spring Boot Asset Pipeline Gradle Adapter]: https://github.com/bertramdev/asset-pipeline/tree/master/asset-pipeline-spring-boot  
 [Client Dependencies Gradle Plugin]:https://github.com/craigburke/client-dependencies-gradle
+[Client Dependencies Management using Gradle]: https://github.com/craigburke/client-dependencies-gradle
 [Spring Tool Suite]:https://spring.io/tools
 [JDK 1.8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [MySql]: https://www.mysql.com/
