@@ -1,6 +1,4 @@
 //= wrapped
-//= require /angular/angular 
-//= require /bootdemo/core/bootdemo.core
 //= require_self
 //= require routes
 //= require_tree services

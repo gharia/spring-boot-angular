@@ -1,13 +1,13 @@
 //= wrapped
 //= require /angular/angular
 //= require /angular/angular-resource
-//= require /angular/angular-route
+//= require /angular/angular-ui-router
 //= require_self
 //= require_tree services
 
 (function() {
 
-    angular.module("bootdemo.core", ['ngResource', 'ngRoute'])
+    angular.module("bootdemo.core", ['ngResource', 'ui.router'])
         .constant("contextPath", window.contextPath)
         .config(config);
 

@@ -5,8 +5,8 @@
     angular
         .module("bootdemo.user")
         .controller("UserListController", ['userService',UserListController])
-        .controller("UserShowController", ['userService','$routeParams','$location',UserShowController])
-        .controller("UserCreateController", ['userService','$routeParams','$location', '$scope', UserCreateController])
+        .controller("UserShowController", ['userService','$stateParams','$location',UserShowController])
+        .controller("UserCreateController", ['userService','$stateParams','$location', '$scope', UserCreateController])
 
     function UserListController(userService) {
 
@@ -24,7 +24,7 @@
         self.delete = function(user){
             if(confirm("Are you sure you want to delete this user?")) {
                 userService.delete({action: 'delete',userId:$routeParams.userId}, user, function (res) {
-                    $location.path("/user/");
+                    $location.path("/user");
 
                 })
             }

@@ -88,10 +88,10 @@ clientDependencies {
 		'angular-mocks'('1.5.x', into: 'angular') {
 			include 'angular-mocks.js'
 			include 'angular-mocks.min.js'
-		}
-		'angular-route'('1.5.x', into: 'angular'){
-			include 'angular-route.js'
-			include 'angular-route.min.js'
+		}		
+		'angular-ui-router'('1.0.0-alpha.4', into: 'angular'){
+			include 'angular-ui-router.js'
+			include 'angular-ui-router.min.js'
 		}
 		'angular-animate'('1.5.x', into: 'angular') {
 			include 'angular-animate.js'
