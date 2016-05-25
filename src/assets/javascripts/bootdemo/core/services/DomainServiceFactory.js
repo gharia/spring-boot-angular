@@ -13,9 +13,9 @@
         return function(url, paramDefaults, actions, options) {
             var resourceActions = {"update": {method: "PUT"}, "list": {method: "GET", isArray: true}};
             angular.extend(resourceActions, actions);
-
+//alert(paramDefaults);
             return $resource(
-                url,
+            	url,
                 paramDefaults || null,
                 resourceActions,
                 options || {}

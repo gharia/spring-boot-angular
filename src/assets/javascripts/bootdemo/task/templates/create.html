@@ -1,0 +1,19 @@
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input ng-model="ctrl.task.title"  id="title" type="text" class="validate" />
+                <label for="firstname">Title</label>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+            	<textarea ng-model="ctrl.task.description" id="description" class="materialize-textarea"></textarea>                
+                <label for="description">Description</label>
+            </div>            
+        </div>
+
+        <input class="btn" type="submit" ng-click="ctrl.save(ctrl.task)" value="Save" />
+
+    </form>
+</div>

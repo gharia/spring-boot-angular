@@ -56,6 +56,10 @@ dependencies {
     compile("org.codehaus.groovy:groovy")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 	compile("com.bertramlabs.plugins:asset-pipeline-spring-boot:2.7.4")
+	compile("javax.inject:javax.inject:1")
+	compile("org.springframework.boot:spring-boot-starter-security")
+	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-hibernate4', version: '2.7.4'
+	
     testCompile("junit:junit")
 }
 
@@ -89,14 +93,18 @@ clientDependencies {
 			include 'angular-mocks.js'
 			include 'angular-mocks.min.js'
 		}		
-		'angular-ui-router'('1.0.0-alpha.4', into: 'angular'){
+		'angular-ui-router'('0.2.18', into: 'angular'){
 			include 'angular-ui-router.js'
 			include 'angular-ui-router.min.js'
 		}
 		'angular-animate'('1.5.x', into: 'angular') {
 			include 'angular-animate.js'
 			include 'angular-animate.min.js'
-		}				
+		}
+		'angular-cookies'('1.5.x', into: 'angular') {
+			include 'angular-cookies.js'
+			include 'angular-cookies.min.js'
+		}
         
 	}
 

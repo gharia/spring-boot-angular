@@ -1,0 +1,25 @@
+<div class="row"  style="margin: 0 auto; width: 40%;">
+<form class="col s12"  >
+	<div class="col s12 m12">
+		<div class="card" style="padding: 20px">			
+				<div class="row" style="margin-left:7px;margin-right:7px;">
+					<div class="input-field col s12">
+						<input id="username" type="text" class="validate" ng-model="ctrl.credentials.username"> 
+						<label for="firstname">Username</label>
+					</div>					
+				</div>
+				<div class="row" style="margin-left:7px;margin-right:7px;">
+					<div class="input-field col s12">
+						<input id="password" type="password" class="validate" ng-model="ctrl.credentials.password">
+						<label for="password">Password</label>
+					</div>
+				</div>
+				
+				<input class="btn" type="submit" ng-click="ctrl.login()" value="Login" style="margin-left:16px;"/>
+												
+		</div>
+	</div>
+	</form>
+</div>
+
+ 

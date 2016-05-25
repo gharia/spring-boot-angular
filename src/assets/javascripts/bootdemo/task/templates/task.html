@@ -1,0 +1,17 @@
+<div class="card">
+	<div class="card-content">
+		<div class="card-title">Task List</div>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Title</th>
+				<th>Description</th>				
+			</tr>
+			<tr ng-repeat="task in ctrl.tasks">
+				<td ng-bind="task.id"></td>
+				<td><a href="#task/{{task.id}}" ng-bind="task.title"></a></td>
+				<td ng-bind="task.description"></td>				
+			</tr>
+		</table>
+	</div>
+</div>

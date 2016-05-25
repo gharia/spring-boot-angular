@@ -3,25 +3,36 @@
         <div class="row">
             <div class="input-field col s6">
                 <input ng-model="ctrl.user.firstname"  id="firstname" type="text" class="validate">
-                <label for="firstname">First Name</label>
+                <label ng-class="{'active':ctrl.user.firstname != null}" for="firstname">First Name</label>
             </div>
             <div class="input-field col s6">
                 <input ng-model="ctrl.user.lastname" id="lastname" type="text" class="validate">
-                <label for="lastname">Last Name</label>
+                <label ng-class="{'active':ctrl.user.lastname != null}" for="lastname">Last Name</label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s6">
+            <div ng-class="ctrl.user.id? 'input-field col s6' : 'input-field col s4' " >
                 <input ng-model="ctrl.user.email"  id="email" type="email" class="validate">
-                <label for="email">Email</label>
+                <label ng-class="{'active':ctrl.user.email != null}" for="email">Email</label>
             </div>
-            <div class="input-field col s6">
+            <div ng-if="!ctrl.user.id" class="input-field col s4">
+                <input ng-model="ctrl.user.password"  id="password" type="password" class="validate">
+                <label ng-class="{'active':ctrl.user.password != null}" for="email">Password</label>
+            </div>
+            <div ng-class="ctrl.user.id? 'input-field col s6' : 'input-field col s4' "  >
                 <input ng-model="ctrl.user.mobileNo" id="mobileNo" type="text" class="validate">
-                <label for="mobileNo">Mobile No</label>
-            </div>
-        </div>
-
-        <input class="btn" type="submit" ng-click="ctrl.save(ctrl.user)" value="Save" />
+                <label ng-class="{'active':ctrl.user.mobileNo != null}" for="mobileNo">Mobile No</label>
+            </div>			
+		</div>		
+		<div class="row">			
+			<div class="input-field col s12">
+				<select material-select multiple ng-model="selectedAuths" ng-options="auth.name for auth in authoroties track by auth.id">
+        			<option value="">Select User Authority</option>
+    			</select>    			
+				<label>Authority</label>
+			</div>	
+		</div>
+		<input class="btn" type="submit" ng-click="ctrl.save(ctrl.user)" value="Save" />
 
     </form>
 </div>

@@ -13,17 +13,14 @@
 	rel="stylesheet">
 <style>
 .bullet-list li{
-	list-style-type: disc;
-}
-.numbered-list li{
-	list-style-type: number;
+	    list-style-type: disc;
 }
 </style>
 <script type="text/javascript">
 	window.contextPath = "${request.contextPath}";
 </script>
 </head>
-<body ng-app="bootdemo">
+<body ng-app="home">
 
 	<!-- <ul class="nav navbar-nav navbar-collapse">
 				    <li ng-repeat="item in menu"><a href="#{{item.route}}">{{item.title}}</a> 
@@ -34,36 +31,29 @@
 			<div class="nav-wrapper">
 				<a href="#!" class="brand-logo">Spring Boot</a>
 
-
-				<ul class="right hide-on-med-and-down ng-scope" menu-data="">
-					<li>
-						<a class="dropdown-button" href="#login">Login</a>				
-					</li>
-				</ul>
-				<!-- <ul ng-repeat="item in menu" class="right hide-on-med-and-down" menu-data>
-					<li ng-if="item.subItems">
-						<a class="dropdown-button" data-activates="dropdown{{item.title}}">{{item.title}}<i class="material-icons right">arrow_drop_down</i></a>
-						<ul id="dropdown{{item.title}}" class="dropdown-content">
-							<li ng-repeat="subitem in item.subItems"><a href="{{subitem.url}}">{{subitem.title}}</a></li>
+				<ul class="right hide-on-med-and-down">
+					<li><a class="dropdown-button" href="#!"
+						data-activates="dropdown2">Task<i class="material-icons right">arrow_drop_down</i></a>
+						<ul id="dropdown2" class="dropdown-content">
+							<li><a href="#task/create">Create</a></li>
+							<li><a href="#task">List</a></li>
+							<li class="divider"></li>							
+							<li><a href="#/">Home</a></li>
 						</ul>
-					</li>
-					<li ng-if="!item.subItems">
-						<a class="dropdown-button" ng-if="item.url" href="{{item.url}}">{{item.title}}</a>						
-						<a class="dropdown-button" ng-if="item.onclick" href="#!" ng-click="{{item.onclick}}">{{item.title}}</a>						
-					</li>
-				</ul> -->
-				<!-- <ul class="right hide-on-med-and-down">
-					
+					</li>					
 					<li><a class="dropdown-button" href="#!"
 						data-activates="dropdown1">User<i class="material-icons right">arrow_drop_down</i></a>
 						<ul id="dropdown1" class="dropdown-content">
 							<li><a href="#user/create">Create</a></li>
 							<li><a href="#user">List</a></li>
-							<li class="divider"></li>
-							<li><a href="#login">Login</a></li>
+							<li class="divider"></li>							
 							<li><a href="#/">Home</a></li>
-						</ul></li>
-				</ul> -->
+						</ul>
+					</li>					
+					<li ng-if="!item.subItems">						
+						<a class="dropdown-button" href="#logout">Logout</a>						
+					</li>
+				</ul>				
 			</div>
 		</div>
 	</nav>
@@ -73,7 +63,7 @@
 	<div class="footer" role="contentinfo"></div>
 
 	<script type="application/javascript" src="/assets/jquery/jquery.js"></script>
-	<script type="application/javascript" src="/assets/bootdemo/app.js"></script>
+	<script type="application/javascript" src="/assets/bootdemo/home.js"></script>
 	<script type="application/javascript"
 		src="/assets/materialize/js/materialize.min.js"></script>
 
