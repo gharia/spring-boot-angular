@@ -1,4 +1,4 @@
-# Spring Boot with AngularJS using Asset Pipeline - Added Spring Security and AuditAware
+# Spring Boot with AngularJS using Asset Pipeline - Added Spring Security and AuditorAware
 
 This is sample Spring Boot Single Page Application using Angular. The main features of this proect are [Asset Pipeline] and [Client Dependencies Management using Gradle] integration.
 
@@ -39,7 +39,7 @@ Typical structure of Angular JS files for each module/entity will be as follow:
                     └── bootdemo.user.js //main js file of module.
                     └── routes.js //configuring routes for this module 
 ```
-The project also has Spring Security and Audit Aware cofigured with it. Authentication in Spring Security is done from database. 
+The project also has Spring Security and Auditor Aware cofigured with it. Authentication in Spring Security is done from database. 
 ### Tech
 * [Spring Boot]
 * [Spring Data JPA]
@@ -51,7 +51,7 @@ The project also has Spring Security and Audit Aware cofigured with it. Authenti
 * [Flyway]
 
 ### Update 25th May 2016
-Added Spring Security (database authentication) and AuditAware to track who edited/added entity. Most of the code related to Spring Secuty has been taken from [jhipster-sample-app].
+Added Spring Security (database authentication) and AuditorAware to track who edited/added entity. Most of the code related to Spring Secuty has been taken from [jhipster-sample-app].
 
 ### Reference
 
