@@ -5,63 +5,60 @@ buildscript {
 		maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE")		
-		classpath("org.codehaus.groovy:groovy:2.4.6")
-		classpath("com.bertramlabs.plugins:asset-pipeline-gradle:2.7.4")
-		classpath("gradle.plugin.com.boxfuse.client:flyway-release:4.0")			
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")		
+		classpath("org.codehaus.groovy:groovy:2.4.7")
+		classpath("com.bertramlabs.plugins:asset-pipeline-gradle:2.12.1")
+		classpath("gradle.plugin.com.boxfuse.client:flyway-release:4.0.3")			
     }
 }
 
 plugins {
-    id 'com.craigburke.client-dependencies' version '1.0.0-RC2'
+    id 'com.craigburke.client-dependencies' version '1.3.1'
 }
 
 apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 apply plugin: 'asset-pipeline'
 apply plugin: 'org.flywaydb.flyway'
 apply plugin: 'war'
 
-jar {
+war {
     baseName = 'boot-demo'
     version =  '0.1.0'
 }
 
 repositories {
-    mavenCentral()
-	mavenLocal()
-	maven { url "https://repo.grails.org/grails/core" }
-	jcenter()
-    maven { url "http://repo.spring.io/libs-snapshot" }
+    mavenCentral()	
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-configurations {
-    providedRuntime
-}
 
 dependencies {    
     compile("org.springframework.boot:spring-boot-starter-web")         
-	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+	
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-security")
     compile("mysql:mysql-connector-java")
-	compile("org.flywaydb:flyway-core:4.0")
+	compile("org.flywaydb:flyway-core:4.0.3")
 		
     //compile("org.codehaus.groovy:groovy")
-	compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.6'
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-	compile("com.bertramlabs.plugins:asset-pipeline-spring-boot:2.7.4")
-	compile("javax.inject:javax.inject:1")
-	compile("org.springframework.boot:spring-boot-starter-security")
-	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-hibernate4', version: '2.7.4'
+	compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.7'
+    
+	compile("com.bertramlabs.plugins:asset-pipeline-spring-boot:2.12.1")
+	//compile("javax.inject:javax.inject:1")	
+	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-hibernate4', version: '2.8.5'
+	
+	assets 'com.craigburke.angular:angular-annotate-asset-pipeline:2.4.1'
 	
     testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    
+    
 }
 
 task wrapper(type: Wrapper) {
@@ -114,7 +111,26 @@ clientDependencies {
 
 assets {
   minifyJs = true
-  minifyCss = true    
+  minifyCss = true
+  enableSourceMaps = true
+  configOptions = [:]
+
+  minifyOptions = [
+    languageMode: 'ES5',
+    targetLanguage: 'ES5', //Can go from ES6 to ES5 for those bleeding edgers
+    optimizationLevel: 'SIMPLE',
+    angularPass: true // Can use @ngInject annotation for Angular Apps
+  ]
+
+  //includes = []
+  excludes = ['**/*.less'] //Example Exclude GLOB pattern
+
+  //for plugin packaging
+  packagePlugin=false //set to true if this is a library
+
+  //developmentRuntime can be turned off
+  //developmentRuntime=true
+   
 }
 
 flyway {
